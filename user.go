@@ -89,6 +89,7 @@ func (u *user) processCommand(msg string) {
 			if len(parts) != 2 {
 				break
 			}
+			u.leaveRoom()
 			rooms.userJoinOrCreateRoom(u, parts[1])
 			return
 		case msg == "/rooms":

@@ -67,11 +67,18 @@ func (r *room) removeUser(u *user) {
 //goroutine for handling passing messages to users in a room
 func (r *room) run() {
 
+	defer func() {
+		if e := recover(); e != nil {
+			//we should be fully unlocked and might have written on a closed channel
+			//so ignore
+		}
+	}()
 	defer r.Unlock()
 
 	for msg := range r.msgs {
 		//send message to all users except sender
 		r.Lock()
+
 		for _, u := range r.users {
 			if u != msg.u {
 				if msg.a {
