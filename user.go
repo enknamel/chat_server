@@ -151,13 +151,13 @@ func (u *user) processCommand(msg string) {
 func printHelp() string {
 	return `* Available commands:
 * /help Display this help message.
+* /join [room] you will join the specified room
 * /leave Leave the room you are currently in. You will need to join another room to continue chatting.
 * /m [user] [message] send a private message to the specified user
-* /join [room] you will join the specified room
 * /quit leave the server and disconnect
 * /r [message] reply to the user who last messaged you
-* /rooms list all available chat rooms
 * /rm [message] send a message to the user you last message
+* /rooms list all available chat rooms
 * /users list all logged in users`
 }
 
